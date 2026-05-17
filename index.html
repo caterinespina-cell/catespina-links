@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cate Espina | Tarot y Numerología</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(160deg, #fc1484 0%, #fd7cba 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 20px 64px;
+            font-family: 'Lato', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Destellos blancos sutiles */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(1.5px 1.5px at 15% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 85% 12%, rgba(255,255,255,0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 55% 65%, rgba(255,255,255,0.3) 0%, transparent 100%),
+                radial-gradient(2px 2px at 8%  80%, rgba(255,255,255,0.25) 0%, transparent 100%),
+                radial-gradient(1px 1px at 92% 72%, rgba(255,255,255,0.3) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 38% 18%, rgba(255,255,255,0.2) 0%, transparent 100%),
+                radial-gradient(1px 1px at 68% 88%, rgba(255,255,255,0.2) 0%, transparent 100%),
+                radial-gradient(1px 1px at 25% 55%, rgba(255,255,255,0.15) 0%, transparent 100%),
+                radial-gradient(1px 1px at 72% 40%, rgba(255,255,255,0.2) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 50% 92%, rgba(255,255,255,0.2) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Resplandor oscuro central sutil */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(ellipse at center, rgba(27,19,83,0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 460px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* ── Foto de perfil ── */
+        .photo-wrapper {
+            margin-bottom: 4px;
+        }
+
+        .photo-wrapper img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.7);
+            box-shadow: 0 0 30px rgba(27,19,83,0.25);
+        }
+
+        /* ── Descripción ── */
+        .bio {
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-align: center;
+            margin-top: -4px;
+        }
+
+        /* ── Logo (abajo) ── */
+        .logo-wrapper {
+            margin-top: 8px;
+        }
+
+        .logo-wrapper img {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.4);
+            box-shadow: 0 0 20px rgba(27,19,83,0.15);
+        }
+
+        /* ── Separador ── */
+        .divider {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+            margin: 4px 0;
+        }
+
+        /* ── Etiqueta de sección ── */
+        .section-label {
+            align-self: flex-start;
+            color: #ffffff;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            margin-bottom: -2px;
+            padding-left: 8px;
+            font-weight: 400;
+        }
+
+        /* ── Botones ── */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 15px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 0.4px;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Azul oscuro sólido — cursos */
+        .btn-pink {
+            background: linear-gradient(135deg, #1b1353 0%, #2d1f7a 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 22px rgba(27,19,83,0.45);
+        }
+        .btn-pink:hover {
+            box-shadow: 0 8px 30px rgba(27,19,83,0.6);
+        }
+
+        /* Azul con borde blanco — lecturas */
+        .btn-outline {
+            background: rgba(27,19,83,0.85);
+            border: 1.5px solid rgba(255,255,255,0.4);
+            color: #ffffff;
+        }
+        .btn-outline:hover {
+            background: rgba(27,19,83,0.95);
+            border-color: rgba(255,255,255,0.7);
+            box-shadow: 0 4px 18px rgba(27,19,83,0.3);
+        }
+
+        /* Azul semitransparente — extras */
+        .btn-lavender {
+            background: rgba(27,19,83,0.7);
+            border: 1.5px solid rgba(255,255,255,0.3);
+            color: #ffffff;
+        }
+        .btn-lavender:hover {
+            background: rgba(27,19,83,0.85);
+            border-color: rgba(255,255,255,0.55);
+        }
+
+        /* WhatsApp */
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #1b1353 0%, #2d1f7a 100%);
+            border: 1.5px solid rgba(255,255,255,0.5);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(27,19,83,0.4);
+        }
+        .btn-whatsapp:hover {
+            box-shadow: 0 6px 26px rgba(27,19,83,0.55);
+            border-color: rgba(255,255,255,0.8);
+        }
+
+        .icon {
+            font-size: 17px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            margin-top: 40px;
+            color: rgba(255,255,255,0.6);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Foto de perfil -->
+    <div class="photo-wrapper">
+        <img src="foto.jpg" alt="Cate Espina">
+    </div>
+
+    <!-- Bio -->
+    <p class="bio">Soy Cate, Tarotista, Numeróloga</p>
+
+    <div class="divider"></div>
+
+    <!-- Cursos -->
+    <span class="section-label">✦ &nbsp;Cursos</span>
+
+    <a href="https://laformula-cateespina.netlify.app/" target="_blank" rel="noopener" class="btn btn-pink">
+        <span class="icon">🌙</span> La Fórmula — Curso de Tarot Rider
+    </a>
+
+    <a href="https://curso-oraculodelenormand.netlify.app/" target="_blank" rel="noopener" class="btn btn-pink">
+        <span class="icon">🃏</span> Curso 21 días — Oráculo Lenormand
+    </a>
+
+    <!-- Lecturas -->
+    <span class="section-label">✦ &nbsp;Lecturas</span>
+
+    <a href="https://catespinatarot.com/p/lectura-de-tarot-personalizada" target="_blank" rel="noopener" class="btn btn-outline">
+        <span class="icon">🔮</span> Lectura de Tarot Personalizada
+    </a>
+
+    <a href="https://catespinatarot.com/p/lectura-de-tarot-y-numerologia-anual-2026" target="_blank" rel="noopener" class="btn btn-outline">
+        <span class="icon">✨</span> Tarot + Numerología Anual 2026
+    </a>
+
+    <!-- Contacto y más -->
+    <span class="section-label">✦ &nbsp;Contacto &amp; Más</span>
+
+    <a href="https://wa.me/59892260717" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <span class="icon">💬</span> Contactarme por WhatsApp
+    </a>
+
+    <a href="https://catespinatarot.com/blog" target="_blank" rel="noopener" class="btn btn-lavender">
+        <span class="icon">🌟</span> Eventos Privados
+    </a>
+
+    <a href="https://catespinatarot.com" target="_blank" rel="noopener" class="btn btn-lavender">
+        <span class="icon">🌐</span> Mi Sitio Web
+    </a>
+
+    <!-- Logo abajo -->
+    <div class="logo-wrapper">
+        <img src="logo.png.jpg" alt="Cate Espina Tarot y Numerología">
+    </div>
+
+    <p class="footer">catespinatarot.com</p>
+
+</div>
+</body>
+</html>
