@@ -211,8 +211,8 @@
 
         /* ─── Tarjetas ─── */
         .card {
-            background: rgba(162,162,196,0.1);
-            border: 1px solid rgba(162,162,196,0.22);
+            background: rgba(255,255,255,0.06);
+            border: 1.5px solid rgba(162,162,196,0.35);
             border-radius: 16px;
             padding: 20px;
             margin-bottom: 12px;
@@ -222,13 +222,64 @@
             text-decoration: none;
             transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
             animation: fadeUp 0.5s ease both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Barra de color en el borde izquierdo */
+        .card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: #a2a2c4;
+            border-radius: 16px 0 0 16px;
         }
 
         .card:hover {
-            background: rgba(162,162,196,0.16);
-            border-color: rgba(162,162,196,0.38);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(162,162,196,0.55);
             transform: translateY(-2px);
         }
+
+        /* Tarjeta rosa — cursos tarot */
+        .card-pink::before { background: linear-gradient(to bottom, #fc1484, #fd7cba); }
+        .card-pink {
+            background: rgba(252,20,132,0.08);
+            border-color: rgba(252,20,132,0.35);
+        }
+        .card-pink:hover {
+            background: rgba(252,20,132,0.14);
+            border-color: rgba(252,20,132,0.55);
+        }
+
+        /* Tarjeta lavanda — numerología */
+        .card-lavender::before { background: linear-gradient(to bottom, #a2a2c4, #d0d0e8); }
+        .card-lavender {
+            background: rgba(162,162,196,0.12);
+            border-color: rgba(162,162,196,0.45);
+        }
+        .card-lavender:hover {
+            background: rgba(162,162,196,0.2);
+            border-color: rgba(162,162,196,0.65);
+        }
+
+        /* Tarjeta destacada ⭐ */
+        .card-featured {
+            background: linear-gradient(135deg, rgba(252,20,132,0.22) 0%, rgba(253,124,186,0.1) 100%);
+            border-color: rgba(252,20,132,0.55);
+        }
+        .card-featured::before { background: linear-gradient(to bottom, #fc1484, #fd7cba); }
+        .card-featured:hover {
+            background: linear-gradient(135deg, rgba(252,20,132,0.32) 0%, rgba(253,124,186,0.18) 100%);
+            border-color: rgba(252,20,132,0.75);
+        }
+
+        /* Tarjeta cerrada — gris */
+        .card-closed { opacity: 0.65; }
+        .card-closed::before { background: #7e7e7f; }
+        .card-closed .card-tag { color: #7e7e7f; }
+        .card-closed .card-cta { color: #7e7e7f; }
 
         .card-tag {
             color: #fc1484;
@@ -261,16 +312,6 @@
             font-weight: 700;
             letter-spacing: 1px;
             margin-top: 4px;
-        }
-
-        /* Tarjeta rosa destacada */
-        .card-featured {
-            background: linear-gradient(135deg, rgba(252,20,132,0.2) 0%, rgba(253,124,186,0.1) 100%);
-            border-color: rgba(252,20,132,0.45);
-        }
-        .card-featured:hover {
-            background: linear-gradient(135deg, rgba(252,20,132,0.28) 0%, rgba(253,124,186,0.16) 100%);
-            border-color: rgba(252,20,132,0.65);
         }
 
         /* ─── Sección WhatsApp canal ─── */
@@ -479,7 +520,7 @@
 <section class="links-section">
     <div class="links-inner">
 
-        <!-- CURSOS -->
+        <!-- FORMACIÓN -->
         <div class="block">
             <p class="block-eyebrow">Formación</p>
             <h2 class="block-title">Aprendé conmigo</h2>
@@ -491,7 +532,14 @@
                 <span class="card-cta">VER CURSO →</span>
             </a>
 
-            <a href="https://caterinespina-cell.github.io/landing-lenormand" target="_blank" rel="noopener" class="card d2">
+            <a href="LINK-FORMULA-NUMERICA" target="_blank" rel="noopener" class="card card-lavender d2">
+                <span class="card-tag">Formación profesional</span>
+                <span class="card-name">Fórmula Numérica</span>
+                <span class="card-desc">Formación profesional en Numerología Pitagórica. Descubrí el lenguaje de los números y su influencia en tu vida.</span>
+                <span class="card-cta">VER INFO →</span>
+            </a>
+
+            <a href="https://caterinespina-cell.github.io/landing-lenormand" target="_blank" rel="noopener" class="card card-pink card-closed d3">
                 <span class="card-tag">Curso</span>
                 <span class="card-name">Oráculo Lenormand</span>
                 <span class="card-desc">Inscripciones cerradas — el curso ya comenzó. ¡Próxima edición pronto!</span>
@@ -504,14 +552,14 @@
             <p class="block-eyebrow">Sesiones personalizadas</p>
             <h2 class="block-title">Lecturas</h2>
 
-            <a href="https://catespinatarot.com/?ver=lectura-personal" target="_blank" rel="noopener" class="card d3">
+            <a href="https://catespinatarot.com/?ver=lectura-personal" target="_blank" rel="noopener" class="card card-pink d4">
                 <span class="card-tag">Lectura</span>
                 <span class="card-name">Lectura de Tarot Personalizada</span>
                 <span class="card-desc">Una lectura profunda y reveladora pensada para vos y tu momento de vida.</span>
                 <span class="card-cta">RESERVAR →</span>
             </a>
 
-            <a href="https://catespinatarot.com/?ver=lectura-anual" target="_blank" rel="noopener" class="card d4">
+            <a href="https://catespinatarot.com/?ver=lectura-anual" target="_blank" rel="noopener" class="card card-lavender d5">
                 <span class="card-tag">Lectura anual</span>
                 <span class="card-name">Tarot + Numerología 2026</span>
                 <span class="card-desc">Tu mapa completo para el 2026: energías del año, meses clave y numerología personal.</span>
