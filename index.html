@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cate Espina | Tarot y Numerología</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -14,18 +14,30 @@
         }
 
         body {
-            background: #1b1353;
+            background: #0d0a2e;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 48px 20px 64px;
+            padding: 56px 20px 72px;
             font-family: 'Montserrat', sans-serif;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* ── Estrellas animadas ── */
+        /* ── Fondo degradado ── */
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(252,20,132,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(27,19,83,0.8) 0%, transparent 60%),
+                linear-gradient(160deg, #0d0a2e 0%, #1b1353 50%, #120d3a 100%);
+            pointer-events: none;
+        }
+
+        /* ── Estrellas ── */
         .stars {
             position: fixed;
             inset: 0;
@@ -47,23 +59,9 @@
             50%       { opacity: var(--op); transform: scale(1); }
         }
 
-        /* Resplandor central */
-        body::after {
-            content: '';
-            position: fixed;
-            top: -10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 700px;
-            height: 500px;
-            background: radial-gradient(ellipse at center, rgba(252,20,132,0.15) 0%, transparent 65%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
         /* ── Animaciones de entrada ── */
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
+            from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
@@ -73,166 +71,250 @@
         }
 
         @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.85); }
+            from { opacity: 0; transform: scale(0.9); }
             to   { opacity: 1; transform: scale(1); }
         }
 
+        /* ── Contenedor principal ── */
         .container {
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 460px;
+            max-width: 440px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         /* ── Foto de perfil ── */
         .photo-wrapper {
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             animation: scaleIn 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
+            position: relative;
+        }
+
+        .photo-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fc1484, #fd7cba, #fc1484);
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .photo-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(252,20,132,0.25) 0%, transparent 70%);
+            z-index: -2;
         }
 
         .photo-wrapper img {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid #fc1484;
-            box-shadow: 0 0 0 5px rgba(252,20,132,0.2), 0 8px 30px rgba(252,20,132,0.3);
+            border: 3px solid #0d0a2e;
+            display: block;
+        }
+
+        /* ── Nombre ── */
+        .name {
+            color: #ffffff;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-align: center;
+            animation: fadeUp 0.6s 0.2s ease both;
+            margin-top: 4px;
         }
 
         /* ── Bio ── */
         .bio {
-            color: #ffffff;
+            color: rgba(255,255,255,0.7);
             font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: 1px;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 2px;
             text-align: center;
-            text-shadow: 0 1px 8px rgba(27,19,83,0.2);
-            animation: fadeIn 0.8s 0.3s ease both;
+            text-transform: uppercase;
+            animation: fadeIn 0.8s 0.35s ease both;
         }
 
-        /* ── Separador ── */
+        /* ── Separador decorativo ── */
         .divider {
-            width: 80px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.7), transparent);
-            margin: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            margin: 6px 0;
             animation: fadeIn 0.8s 0.4s ease both;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(252,20,132,0.3), transparent);
+        }
+
+        .divider-icon {
+            color: rgba(252,20,132,0.6);
+            font-size: 12px;
+            letter-spacing: 4px;
         }
 
         /* ── Etiqueta de sección ── */
         .section-label {
             align-self: flex-start;
-            color: #ffffff;
+            color: rgba(255,255,255,0.45);
             font-family: 'League Spartan', sans-serif;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 600;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-top: 10px;
-            margin-bottom: -2px;
-            padding-left: 8px;
-            text-shadow: 0 1px 6px rgba(27,19,83,0.15);
+            margin-top: 14px;
+            margin-bottom: 2px;
+            padding-left: 4px;
         }
 
-        /* ── Animación escalonada de botones ── */
-        .animate {
-            animation: fadeUp 0.5s ease both;
-        }
+        /* ── Animación escalonada ── */
+        .animate { animation: fadeUp 0.5s ease both; }
         .d1  { animation-delay: 0.15s; }
-        .d2  { animation-delay: 0.25s; }
-        .d3  { animation-delay: 0.35s; }
-        .d4  { animation-delay: 0.45s; }
-        .d5  { animation-delay: 0.55s; }
-        .d6  { animation-delay: 0.65s; }
-        .d7  { animation-delay: 0.75s; }
-        .d8  { animation-delay: 0.85s; }
-        .d9  { animation-delay: 0.95s; }
+        .d2  { animation-delay: 0.22s; }
+        .d3  { animation-delay: 0.29s; }
+        .d4  { animation-delay: 0.36s; }
+        .d5  { animation-delay: 0.43s; }
+        .d6  { animation-delay: 0.50s; }
+        .d7  { animation-delay: 0.57s; }
+        .d8  { animation-delay: 0.64s; }
+        .d9  { animation-delay: 0.71s; }
 
-        /* ── Botones ── */
+        /* ── Botones base ── */
         .btn {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 12px;
             width: 100%;
-            padding: 15px 24px;
-            border-radius: 50px;
+            padding: 16px 22px;
+            border-radius: 16px;
             text-decoration: none;
             font-family: 'League Spartan', sans-serif;
             font-size: 15px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
             cursor: pointer;
-            text-align: center;
             border: none;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn:hover  { transform: translateY(-3px) scale(1.01); }
-        .btn:active { transform: translateY(-1px); }
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-        /* Rosa brillante — cursos */
+        .btn:hover  { transform: translateY(-2px); }
+        .btn:active { transform: translateY(0); }
+
+        .btn-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .btn-subtitle {
+            font-size: 11px;
+            font-weight: 400;
+            opacity: 0.75;
+            letter-spacing: 0.5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Botón principal — degradado rosa */
         .btn-pink {
-            background: linear-gradient(135deg, #fc1484 0%, #fd7cba 100%);
+            background: linear-gradient(135deg, #fc1484 0%, #e8006e 60%, #c5005e 100%);
             color: #ffffff;
-            box-shadow: 0 4px 22px rgba(252,20,132,0.4);
+            box-shadow: 0 4px 24px rgba(252,20,132,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
         }
-        .btn-pink:hover { box-shadow: 0 8px 30px rgba(252,20,132,0.6); }
+        .btn-pink:hover {
+            box-shadow: 0 8px 32px rgba(252,20,132,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
 
-        /* Rosa con borde — lecturas */
-        .btn-outline {
+        /* Botón glass — lecturas */
+        .btn-glass {
+            background: rgba(252,20,132,0.08);
+            border: 1px solid rgba(252,20,132,0.35);
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 12px rgba(252,20,132,0.1);
+        }
+        .btn-glass:hover {
             background: rgba(252,20,132,0.15);
-            border: 1.5px solid rgba(252,20,132,0.7);
-            color: #ffffff;
-        }
-        .btn-outline:hover {
-            background: rgba(252,20,132,0.25);
-            border-color: #fc1484;
-            box-shadow: 0 4px 18px rgba(252,20,132,0.3);
+            border-color: rgba(252,20,132,0.6);
+            box-shadow: 0 4px 20px rgba(252,20,132,0.2);
         }
 
-        /* Rosa suave — extras */
-        .btn-lavender {
-            background: rgba(253,124,186,0.15);
-            border: 1.5px solid rgba(253,124,186,0.5);
-            color: #ffffff;
+        /* Botón glass suave — extras */
+        .btn-soft {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
         }
-        .btn-lavender:hover {
-            background: rgba(253,124,186,0.25);
-            border-color: #fd7cba;
+        .btn-soft:hover {
+            background: rgba(255,255,255,0.09);
+            border-color: rgba(255,255,255,0.22);
         }
 
         /* WhatsApp */
         .btn-whatsapp {
             background: linear-gradient(135deg, #fc1484 0%, #fd7cba 100%);
-            border: none;
             color: #ffffff;
-            box-shadow: 0 4px 20px rgba(252,20,132,0.4);
+            box-shadow: 0 4px 24px rgba(252,20,132,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
         }
         .btn-whatsapp:hover {
-            box-shadow: 0 6px 26px rgba(252,20,132,0.6);
+            box-shadow: 0 8px 32px rgba(252,20,132,0.5);
         }
 
-        .icon {
-            font-size: 17px;
+        /* Ícono container */
+        .icon-wrap {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
             flex-shrink: 0;
-            line-height: 1;
+            background: rgba(255,255,255,0.12);
+        }
+
+        .btn-pink .icon-wrap,
+        .btn-whatsapp .icon-wrap {
+            background: rgba(0,0,0,0.15);
         }
 
         /* ── Logo ── */
         .logo-wrapper {
-            margin-top: 8px;
-            animation: fadeIn 1s 1s ease both;
+            margin-top: 12px;
+            animation: fadeIn 1s 0.9s ease both;
+            opacity: 0.9;
         }
 
         .logo-wrapper img {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             object-fit: contain;
             border-radius: 0;
             border: none;
@@ -241,34 +323,31 @@
 
         /* ── Footer ── */
         .footer {
-            margin-top: 16px;
-            color: rgba(255,255,255,0.6);
-            font-size: 11px;
-            letter-spacing: 2px;
+            margin-top: 8px;
+            color: rgba(255,255,255,0.3);
+            font-size: 10px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
-            animation: fadeIn 1s 1.1s ease both;
+            animation: fadeIn 1s 1s ease both;
         }
 
         /* ── Mobile ── */
         @media (max-width: 480px) {
-            body { padding: 36px 16px 56px; }
+            body { padding: 40px 16px 60px; }
             .btn {
-                font-size: 13px;
+                font-size: 14px;
                 padding: 14px 18px;
-                white-space: normal;
-                text-align: center;
-                line-height: 1.4;
             }
-            .icon { font-size: 15px; }
-            .photo-wrapper img { width: 110px; height: 110px; }
-            .bio { font-size: 19px; }
+            .icon-wrap { width: 32px; height: 32px; font-size: 16px; }
+            .photo-wrapper img { width: 120px; height: 120px; }
+            .name { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Estrellas -->
+<div class="bg-gradient"></div>
 <div class="stars" id="stars"></div>
 
 <div class="container">
@@ -278,48 +357,64 @@
         <img src="foto.jpg" alt="Cate Espina">
     </div>
 
-    <!-- Bio -->
-    <p class="bio">Soy Cate, Tarotista, Numeróloga</p>
+    <!-- Nombre -->
+    <h1 class="name">Cate Espina</h1>
 
-    <div class="divider"></div>
+    <!-- Bio -->
+    <p class="bio">Tarotista · Numeróloga</p>
+
+    <div class="divider">
+        <span class="divider-icon">✦ ✦ ✦</span>
+    </div>
 
     <!-- Cursos -->
-    <span class="section-label animate d1">✦ &nbsp;Cursos</span>
+    <span class="section-label animate d1">Cursos</span>
 
     <a href="https://caterinespina-cell.github.io/la-formula-landing" target="_blank" rel="noopener" class="btn btn-pink animate d2">
-        <span class="icon">🌙</span>
-        <span>La Fórmula — Curso de Tarot Rider<br><small style="font-size:12px; opacity:0.85;">Inicio 21 de julio</small></span>
+        <div class="icon-wrap">🌙</div>
+        <div class="btn-text">
+            <span>La Fórmula — Curso de Tarot Rider</span>
+            <span class="btn-subtitle">Inicio 21 de julio</span>
+        </div>
     </a>
 
-    <a href="https://caterinespina-cell.github.io/landing-lenormand" target="_blank" rel="noopener" class="btn btn-pink animate d3">
-        <span class="icon">🃏</span>
-        <span>Curso Oráculo Lenormand<br><small style="font-size:12px; opacity:0.85;">Inscripciones cerradas</small></span>
+    <a href="https://caterinespina-cell.github.io/landing-lenormand" target="_blank" rel="noopener" class="btn btn-glass animate d3">
+        <div class="icon-wrap">🃏</div>
+        <div class="btn-text">
+            <span>Curso Oráculo Lenormand</span>
+            <span class="btn-subtitle">Inscripciones cerradas</span>
+        </div>
     </a>
 
     <!-- Lecturas -->
-    <span class="section-label animate d4">✦ &nbsp;Lecturas</span>
+    <span class="section-label animate d4">Lecturas</span>
 
-    <a href="https://catespinatarot.com/?ver=lectura-personal" target="_blank" rel="noopener" class="btn btn-outline animate d5">
-        <span class="icon">🔮</span> Lectura de Tarot Personalizada
+    <a href="https://catespinatarot.com/?ver=lectura-personal" target="_blank" rel="noopener" class="btn btn-glass animate d5">
+        <div class="icon-wrap">🔮</div>
+        <span>Lectura de Tarot Personalizada</span>
     </a>
 
-    <a href="https://catespinatarot.com/?ver=lectura-anual" target="_blank" rel="noopener" class="btn btn-outline animate d6">
-        <span class="icon">✨</span> Tarot + Numerología Anual 2026
+    <a href="https://catespinatarot.com/?ver=lectura-anual" target="_blank" rel="noopener" class="btn btn-glass animate d6">
+        <div class="icon-wrap">✨</div>
+        <span>Tarot + Numerología Anual 2026</span>
     </a>
 
-    <!-- Contacto -->
-    <span class="section-label animate d7">✦ &nbsp;Contacto &amp; Más</span>
+    <!-- Contacto & Más -->
+    <span class="section-label animate d7">Contacto &amp; Más</span>
 
     <a href="https://wa.me/59892260717" target="_blank" rel="noopener" class="btn btn-whatsapp animate d7">
-        <span class="icon">💬</span> Contactarme por WhatsApp
+        <div class="icon-wrap">💬</div>
+        <span>Contactarme por WhatsApp</span>
     </a>
 
-    <a href="https://catespinatarot.com/?tab=eventos" target="_blank" rel="noopener" class="btn btn-lavender animate d8">
-        <span class="icon">🌟</span> Eventos Privados
+    <a href="https://catespinatarot.com/?tab=eventos" target="_blank" rel="noopener" class="btn btn-soft animate d8">
+        <div class="icon-wrap">🌟</div>
+        <span>Eventos Privados</span>
     </a>
 
-    <a href="https://www.catespinatarot.com/" target="_blank" rel="noopener" class="btn btn-lavender animate d9">
-        <span class="icon">🌐</span> Mi Sitio Web
+    <a href="https://www.catespinatarot.com/" target="_blank" rel="noopener" class="btn btn-soft animate d9">
+        <div class="icon-wrap">🌐</div>
+        <span>Mi Sitio Web</span>
     </a>
 
     <!-- Logo -->
@@ -332,21 +427,19 @@
 </div>
 
 <script>
-    // Generar estrellas dinámicas
     const container = document.getElementById('stars');
-    const count = 60;
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < 70; i++) {
         const s = document.createElement('div');
         s.classList.add('star');
-        const size = Math.random() * 3 + 1;
+        const size = Math.random() * 2.5 + 0.5;
         s.style.cssText = `
             width: ${size}px;
             height: ${size}px;
             top: ${Math.random() * 100}%;
             left: ${Math.random() * 100}%;
-            --dur: ${Math.random() * 3 + 2}s;
-            --op: ${Math.random() * 0.6 + 0.2};
-            animation-delay: ${Math.random() * 4}s;
+            --dur: ${Math.random() * 4 + 2}s;
+            --op: ${Math.random() * 0.5 + 0.15};
+            animation-delay: ${Math.random() * 5}s;
         `;
         container.appendChild(s);
     }
