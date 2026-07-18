@@ -79,32 +79,17 @@
             50%       { transform: translateY(-12px); }
         }
 
-        /* Título */
-        .hero-title {
+        /* Logo con nombre */
+        .hero-logo-nombre {
             position: relative;
             z-index: 2;
-            color: #ffffff;
-            font-family: 'League Spartan', sans-serif;
-            font-size: clamp(42px, 12vw, 72px);
-            font-weight: 900;
-            line-height: 0.92;
-            text-align: center;
-            letter-spacing: -1px;
-            text-transform: uppercase;
+            width: min(340px, 88vw);
+            height: auto;
+            object-fit: contain;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
             animation: fadeUp 0.7s 0.15s ease both;
-        }
-
-        .hero-subtitle {
-            position: relative;
-            z-index: 2;
-            color: #a2a2c4;
-            font-size: 11px;
-            font-weight: 400;
-            letter-spacing: 3.5px;
-            text-transform: uppercase;
-            text-align: center;
-            margin-top: 10px;
-            animation: fadeUp 0.7s 0.3s ease both;
         }
 
         /* ─── Elementos flotantes decorativos ─── */
@@ -486,9 +471,8 @@
         <img src="foto.jpg" alt="Cate Espina">
     </div>
 
-    <!-- Título y subtítulo -->
-    <h1 class="hero-title">Cate<br>Espina</h1>
-    <p class="hero-subtitle">Tarotista &nbsp;·&nbsp; Numeróloga</p>
+    <!-- Logo con nombre -->
+    <img src="logo-nombre.jpg" alt="Cate Espina Tarot y Numerología" class="hero-logo-nombre">
 
 </section>
 
