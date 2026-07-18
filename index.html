@@ -159,23 +159,21 @@
             to   { transform: translateX(-50%); }
         }
 
-        /* ─── SECCIÓN LINKS ─── */
-        .links-section {
-            background: #f5f3ff;
-            padding: 36px 20px 64px;
+        /* ─── SECCIONES ─── */
+        .sec {
+            padding: 36px 20px 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
+        .sec-formacion { background: #f5f3ff; }
+        .sec-lecturas  { background: #fce8f3; }
+        .sec-contacto  { background: #1b1353; padding-bottom: 64px; }
+
         .links-inner {
             width: 100%;
             max-width: 440px;
-        }
-
-        /* Bloque de sección */
-        .block {
-            margin-bottom: 36px;
         }
 
         .block-eyebrow {
@@ -197,6 +195,10 @@
             text-transform: uppercase;
             margin-bottom: 16px;
         }
+
+        /* Variantes oscuras para sección contacto */
+        .block-eyebrow-dark { color: #a2a2c4; }
+        .block-title-dark   { color: #ffffff; }
 
         /* ─── Tarjetas ─── */
         .card {
@@ -308,7 +310,7 @@
         }
 
         .wa-title {
-            color: #1b1353;
+            color: #ffffff;
             font-family: 'League Spartan', sans-serif;
             font-size: 20px;
             font-weight: 800;
@@ -317,7 +319,7 @@
         }
 
         .wa-desc {
-            color: #7e7e7f;
+            color: #a2a2c4;
             font-size: 13px;
             line-height: 1.5;
             margin-bottom: 14px;
@@ -396,6 +398,18 @@
             box-shadow: 0 4px 16px rgba(27,19,83,0.1);
         }
         .btn-soft .icon-wrap { background: rgba(162,162,196,0.18); }
+
+        /* Botones suaves para fondo oscuro */
+        .btn-soft-dark {
+            background: rgba(162,162,196,0.12);
+            border: 1.5px solid rgba(162,162,196,0.3);
+            color: #ffffff;
+        }
+        .btn-soft-dark:hover {
+            background: rgba(162,162,196,0.2);
+            border-color: rgba(162,162,196,0.5);
+        }
+        .btn-soft-dark .icon-wrap { background: rgba(162,162,196,0.15); }
 
         /* ─── Logo y footer ─── */
         .logo-wrapper {
@@ -490,58 +504,61 @@
     </div>
 </div>
 
-<!-- ═══ LINKS ═══ -->
-<section class="links-section">
+<!-- ═══ FORMACIÓN (lavanda claro) ═══ -->
+<section class="sec sec-formacion">
+    <div class="links-inner">
+        <p class="block-eyebrow">Formación</p>
+        <h2 class="block-title">Aprendé conmigo</h2>
+
+        <a href="https://caterinespina-cell.github.io/la-formula-landing" target="_blank" rel="noopener" class="card card-featured d1">
+            <span class="card-tag">⭐ Curso destacado</span>
+            <span class="card-name">La Fórmula — Tarot Rider</span>
+            <span class="card-desc">Aprendé a leer el Tarot Rider Waite desde cero con un método claro, profundo y transformador.</span>
+            <span class="card-cta">VER CURSO →</span>
+        </a>
+
+        <a href="LINK-FORMULA-NUMERICA" target="_blank" rel="noopener" class="card card-lavender d2">
+            <span class="card-tag">Formación profesional</span>
+            <span class="card-name">Fórmula Numérica</span>
+            <span class="card-desc">Formación profesional en Numerología Pitagórica. Descubrí el lenguaje de los números y su influencia en tu vida.</span>
+            <span class="card-cta">VER INFO →</span>
+        </a>
+
+        <a href="https://caterinespina-cell.github.io/landing-lenormand" target="_blank" rel="noopener" class="card card-closed d3">
+            <span class="card-tag">Curso</span>
+            <span class="card-name">Oráculo Lenormand</span>
+            <span class="card-desc">Inscripciones cerradas — el curso ya comenzó. ¡Próxima edición pronto!</span>
+            <span class="card-cta">VER INFO →</span>
+        </a>
+    </div>
+</section>
+
+<!-- ═══ LECTURAS (rosa claro) ═══ -->
+<section class="sec sec-lecturas">
+    <div class="links-inner">
+        <p class="block-eyebrow">Sesiones personalizadas</p>
+        <h2 class="block-title">Lecturas</h2>
+
+        <a href="https://catespinatarot.com/?ver=lectura-personal" target="_blank" rel="noopener" class="card card-pink d1">
+            <span class="card-tag">Lectura</span>
+            <span class="card-name">Lectura de Tarot Personalizada</span>
+            <span class="card-desc">Una lectura profunda y reveladora pensada para vos y tu momento de vida.</span>
+            <span class="card-cta">RESERVAR →</span>
+        </a>
+
+        <a href="https://catespinatarot.com/?ver=lectura-anual" target="_blank" rel="noopener" class="card card-lavender d2">
+            <span class="card-tag">Lectura anual</span>
+            <span class="card-name">Tarot + Numerología 2026</span>
+            <span class="card-desc">Tu mapa completo para el 2026: energías del año, meses clave y numerología personal.</span>
+            <span class="card-cta">RESERVAR →</span>
+        </a>
+    </div>
+</section>
+
+<!-- ═══ CONTACTO (azul marino) ═══ -->
+<section class="sec sec-contacto">
     <div class="links-inner">
 
-        <!-- FORMACIÓN -->
-        <div class="block">
-            <p class="block-eyebrow">Formación</p>
-            <h2 class="block-title">Aprendé conmigo</h2>
-
-            <a href="https://caterinespina-cell.github.io/la-formula-landing" target="_blank" rel="noopener" class="card card-featured d1">
-                <span class="card-tag">⭐ Curso destacado</span>
-                <span class="card-name">La Fórmula — Tarot Rider</span>
-                <span class="card-desc">Aprendé a leer el Tarot Rider Waite desde cero con un método claro, profundo y transformador.</span>
-                <span class="card-cta">VER CURSO →</span>
-            </a>
-
-            <a href="LINK-FORMULA-NUMERICA" target="_blank" rel="noopener" class="card card-lavender d2">
-                <span class="card-tag">Formación profesional</span>
-                <span class="card-name">Fórmula Numérica</span>
-                <span class="card-desc">Formación profesional en Numerología Pitagórica. Descubrí el lenguaje de los números y su influencia en tu vida.</span>
-                <span class="card-cta">VER INFO →</span>
-            </a>
-
-            <a href="https://caterinespina-cell.github.io/landing-lenormand" target="_blank" rel="noopener" class="card card-pink card-closed d3">
-                <span class="card-tag">Curso</span>
-                <span class="card-name">Oráculo Lenormand</span>
-                <span class="card-desc">Inscripciones cerradas — el curso ya comenzó. ¡Próxima edición pronto!</span>
-                <span class="card-cta">VER INFO →</span>
-            </a>
-        </div>
-
-        <!-- LECTURAS -->
-        <div class="block">
-            <p class="block-eyebrow">Sesiones personalizadas</p>
-            <h2 class="block-title">Lecturas</h2>
-
-            <a href="https://catespinatarot.com/?ver=lectura-personal" target="_blank" rel="noopener" class="card card-pink d4">
-                <span class="card-tag">Lectura</span>
-                <span class="card-name">Lectura de Tarot Personalizada</span>
-                <span class="card-desc">Una lectura profunda y reveladora pensada para vos y tu momento de vida.</span>
-                <span class="card-cta">RESERVAR →</span>
-            </a>
-
-            <a href="https://catespinatarot.com/?ver=lectura-anual" target="_blank" rel="noopener" class="card card-lavender d5">
-                <span class="card-tag">Lectura anual</span>
-                <span class="card-name">Tarot + Numerología 2026</span>
-                <span class="card-desc">Tu mapa completo para el 2026: energías del año, meses clave y numerología personal.</span>
-                <span class="card-cta">RESERVAR →</span>
-            </a>
-        </div>
-
-        <!-- CANAL WA -->
         <div class="wa-block">
             <p class="wa-eyebrow">Unite gratis</p>
             <p class="wa-title">Canal de WhatsApp</p>
@@ -551,34 +568,27 @@
             </a>
         </div>
 
-        <!-- CONTACTO & MÁS -->
-        <div class="block">
-            <p class="block-eyebrow">Contacto &amp; más</p>
-            <h2 class="block-title">¿Hablamos?</h2>
+        <p class="block-eyebrow block-eyebrow-dark">Contacto &amp; más</p>
+        <h2 class="block-title block-title-dark">¿Hablamos?</h2>
 
-            <div class="btn-row">
-                <a href="https://wa.me/59892260717" target="_blank" rel="noopener" class="btn btn-pink d5">
-                    <div class="icon-wrap">💬</div>
-                    Contactarme por WhatsApp
-                </a>
-
-                <a href="https://catespinatarot.com/?tab=eventos" target="_blank" rel="noopener" class="btn btn-soft d6">
-                    <div class="icon-wrap">🌟</div>
-                    Eventos Privados
-                </a>
-
-                <a href="https://www.catespinatarot.com/" target="_blank" rel="noopener" class="btn btn-soft d7">
-                    <div class="icon-wrap">🌐</div>
-                    Mi Sitio Web
-                </a>
-            </div>
+        <div class="btn-row">
+            <a href="https://wa.me/59892260717" target="_blank" rel="noopener" class="btn btn-pink d1">
+                <div class="icon-wrap">💬</div>
+                Contactarme por WhatsApp
+            </a>
+            <a href="https://catespinatarot.com/?tab=eventos" target="_blank" rel="noopener" class="btn btn-soft-dark d2">
+                <div class="icon-wrap">🌟</div>
+                Eventos Privados
+            </a>
+            <a href="https://www.catespinatarot.com/" target="_blank" rel="noopener" class="btn btn-soft-dark d3">
+                <div class="icon-wrap">🌐</div>
+                Mi Sitio Web
+            </a>
         </div>
 
-        <!-- Logo -->
         <div class="logo-wrapper">
             <img src="logo.png.jpg" alt="Cate Espina Tarot y Numerología">
         </div>
-
         <p class="footer">catespinatarot.com</p>
 
     </div>
